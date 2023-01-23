@@ -1,0 +1,12 @@
+
+
+h1{
+    font-size: 100px;
+}
+
+.main{
+    background-image: url("../img/HearthFood.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}

@@ -1,0 +1,48 @@
+*{
+    font-family: Roboto;
+}
+.greenText{
+    color: #9AD994;
+}
+
+.greenBackground{
+    background-color: #9AD994 ;
+}
+
+.btn{
+    background-color: #9AD994;
+    border: 5px solid #9AD994;
+    width: 200px;
+    color: black;
+}
+.btn:hover{
+    background: white;
+    color: black;
+    border: 5px solid #9AD994 ;
+}
+
+.btn:focus{
+    background: white;
+    color: black;
+    border: 5px solid #9AD994 ;
+}
+
+.btn:active{
+
+    background: white;
+    color: black;
+    border: 5px solid #9AD994 ;
+    outline: 20px #9AD994;
+}
+
+.navbar{
+
+}
+
+.nav-link:hover, a:hover{
+    color: white;
+}
+
+#logout:hover{
+    cursor: pointer;
+}

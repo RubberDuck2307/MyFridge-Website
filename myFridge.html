@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Fridge</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <link href="css/MyFridge.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg sticky-top greenText bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand greenText" href="myFridge.html">My Fridge</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-evenly col-5">
+                    <li class="nav-item ">
+                        <a class="nav-link greenText" href="fridge.html">Open Fridge</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link greenText" href="cookFromFridge.html?type=fridge">Cook from Fridge</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link greenText" href="cookFromFridge.html?type=favourite">Favourite recipes</a>
+                    </li>
+                </ul>
+                <a class="navbar-brand" id="logout">
+                    <img src="img/logOutIcon.png" alt="" width="30" height="30"
+                         class="d-inline-block align-text-top">
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<div class="container mt-3">
+    <div class="row">
+        <a href="fridge.html" class="col-3">
+            <div class="card col-12 ">
+                <div class="row ps-2">
+                    <div class="col-6 d-flex align-items-center justify-content-center p-2">
+                        <img src="img/fridgeIcon.png" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Open Fridge</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="cookFromFridge.html?type=fridge" class="col-3">
+            <div class="card col-12 ">
+                <div class="row ps-2">
+                    <div class="col-6 d-flex align-items-center justify-content-center p-2">
+                        <img src="img/cookingIcon.png" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Cook from fridge</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="cookFromFridge.html?type=favourite" class="col-3">
+            <div class="card col-12 ">
+                <div class="row ps-2">
+                    <div class="col-6 d-flex align-items-center justify-content-center p-2">
+                        <img src="img/starIcon.png" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Favourite recipes</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<script src="js/spoonacularApiKey.js"></script>
+<script src="js/jquery-3.6.3.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/js.cookie.js"></script>
+<script src="js/utilities.js"></script>
+<script src="js/myFridge.js"></script>
+</body>
+</html>

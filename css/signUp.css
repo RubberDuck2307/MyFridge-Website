@@ -1,0 +1,30 @@
+* {
+    color: white;
+
+}
+
+
+h3{
+    margin: 20px;
+    font-size: 40px;
+}
+
+.main{ height: 70vh;
+    border-radius: 20px;
+    background-color: #EDECEF;
+
+}
+
+.greenText{
+    color: #9AD994;
+}
+
+.bg-image{
+    height: 100vh;
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+

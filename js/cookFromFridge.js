@@ -1,14 +1,11 @@
 async function cookFromFridge() {
-    console.log("hello")
     let response = await getFood()
-    console.log(response)
     const food = []
     for (let i = 0; i < response.data.length; i++) {
         food.push(response.data[i])
     }
 
     let recipes = await getRecipes(food)
-    console.log(recipes)
     return recipes
 }
 
@@ -39,7 +36,6 @@ async function setup() {
         recipes = await cookFavourite()
     }
 
-    console.log(recipes)
     let string = ""
     for (let i = 0; i < recipes.length; i++) {
         string += "<div class=\"col-lg-4 col-md-6 d-flex justify-content-center pb-5\">" +

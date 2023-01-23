@@ -95,10 +95,8 @@ $("#change").on("click", async function () {
     if (changeIndex !== -1) {
         $("#errorText").text("")
         let currentFood = JSON.parse(sessionStorage.getItem(changeIndex.toString()))
-        console.log(currentFood)
         let id = currentFood.ID
         let userid = currentFood.userID
-        console.log(id)
         let name = $("#name").val()
         let type = $("#type").val()
         let amount = $("#amount").val()

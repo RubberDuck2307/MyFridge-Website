@@ -88,7 +88,6 @@ async function getRecipes(food) {
             string += food[i].type + "%2C"
         } else string += food[i].type + "&"
     }
-    console.log(string)
 
     const options = {
         method: 'GET',
@@ -115,7 +114,6 @@ async function getDetailedRecipe(id) {
 
     let response = await fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`, options)
     response = await response.json()
-    console.log(response)
     return response
 }
 
@@ -204,7 +202,6 @@ async function getInformationBulk(idArray){
 
     let response = await fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids=${ids}`, options)
     response = await response.json()
-    console.log(response)
     return response
 }
 

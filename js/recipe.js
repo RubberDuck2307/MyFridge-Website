@@ -3,7 +3,6 @@ const urlParams = new URLSearchParams(queryString)
 
 async function setup() {
     let info = await getDetailedRecipe(urlParams.get("id"))
-    console.log(info)
 
     $("#instruction").text(info.instructions)
     let ingredients = info.extendedIngredients
@@ -134,7 +133,6 @@ function buildUsedTable(food) {
 
         changeId = $(this).data().id
         $(this).addClass("greenBackground")
-        console.log(changeId)
         for (let i = 0; i < food.length; i++) {
             if (changeId === food[i].ID) {
                 if (food[i].usedAmount) {
@@ -251,10 +249,7 @@ setup().then((res) => {
             }
         }
         if (!moved) {
-            console.log("lol")
             for (let i = 0; i < foodInFridge.length; i++) {
-                console.log(foodInFridge[i].ID)
-                console.log(changeId)
                 if (foodInFridge[i].ID === changeId) {
 
                     usedIngredients.push(foodInFridge[i])
@@ -313,9 +308,7 @@ setup().then((res) => {
         let response2 = await saveFood(changedFood)
 
         if (response.success && response2.success) {
-            console.log("hey")
         } else {
-            console.log(response, response2)
         }
 
     })

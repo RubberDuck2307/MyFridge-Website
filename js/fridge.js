@@ -72,7 +72,7 @@ async function save() {
     for (let i = 0; i < keys.length; i++) {
         foodArray.push(sessionStorage[i])
     }
-    let response = saveFood(foodArray)
+    let response = await saveFood(foodArray)
     if (!response.success) {
         $("#errorText").text("Something went wrong")
     } else {
@@ -122,8 +122,10 @@ $("#add").on("click", function () {
 })
 
 $("#delete").on("click", async function () {
+    const foodToDelete = [];
         if (changeIndex !== -1) {
-            let response = await deleteFood([sessionStorage.getItem(changeIndex)])
+            foodToDelete.push(JSON.parse(sessionStorage.getItem(changeIndex)))
+            let response = await deleteFood(foodToDelete)
             if (response.success){
                 resetSessionStorage()
                 await getAllFood()

@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(queryString)
 
 async function setup() {
     let info = await getDetailedRecipe(urlParams.get("id"))
-
+    console.log(info)
     $("#instruction").text(info.instructions)
     let ingredients = info.extendedIngredients
 
@@ -11,6 +11,7 @@ async function setup() {
 
     let foodInFridge = await getFood(Cookies.get("token"))
     foodInFridge = (foodInFridge).data
+    console.log(foodInFridge)
     const usedIngredients = []
 
 
@@ -23,6 +24,7 @@ async function setup() {
                 foodInFridge.splice(i, 1)
                 foundIndexes.push(j)
                 i -= 1
+                break
 
             }
         }
@@ -308,7 +310,8 @@ setup().then((res) => {
         let response2 = await saveFood(changedFood)
 
         if (response.success && response2.success) {
-        } else {
+            open("myFridge.html","_self")
+
         }
 
     })

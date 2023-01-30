@@ -118,6 +118,7 @@ async function getDetailedRecipe(id) {
 }
 
 async function deleteFood(food) {
+    console.log(food)
     let userID = parseJwt(Cookies.get("token"))
     let response = await fetch(`http://localhost:3000/food/${userID.id}`, {
         method: "DELETE",

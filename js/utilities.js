@@ -63,8 +63,7 @@ async function getFood() {
 
 async function getAllFood() {
     if (Cookies.get("token")) {
-        let token = Cookies.get("token")
-        let response = await getFood(token)
+        let response = await getFood()
         let data = response.data
         for (let i = 0; i < data.length; i++) {
             sessionStorage.setItem(i.toString(), JSON.stringify(response.data[i]))

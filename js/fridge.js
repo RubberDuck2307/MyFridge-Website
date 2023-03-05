@@ -1,7 +1,6 @@
 function fillTable() {
 
 
-    let keys = Object.keys(sessionStorage)
     let string = " <thead>\n" +
         "    <tr>\n" +
         "      <th>Name</th>\n" +
@@ -12,9 +11,9 @@ function fillTable() {
         "  </thead>\n" +
         "  <tbody>"
 
-    for (let i = 0; i < keys.length; i++) {
-        let object = JSON.parse(sessionStorage.getItem(keys[i]))
-        string += "<tr data-index = " + keys[i] + ">\n" +
+    for (let i = 0; i < data.length; i++) {
+        let object = data[i]
+        string += "<tr data-index = " + i + ">\n" +
             "<td>" + object.name + "</td>\n" +
             "<td>" + object.type + "</td>\n" +
             "<td>" + object.amount + "</td>\n" +
@@ -31,7 +30,7 @@ function fillTable() {
         })
         changeIndex = $(this).data().index
         $(this).addClass("greenBackground")
-        let food = JSON.parse(sessionStorage.getItem(changeIndex))
+        let food = data[changeIndex]
         $("#amount").val(food.amount)
         $("#type").val(food.type)
         $("#unit").val(food.unit)
@@ -54,9 +53,10 @@ async function addToTable() {
         $("#errorText").text("Name and type must be filled in")
     } else {
         let food = {name: name, type: type, amount: amount, unit: unit}
-        let index = Object.keys(sessionStorage).length
-        sessionStorage.setItem((index).toString(), JSON.stringify(food))
+        data[data.length] = food
         await save()
+        let response = await getFood();
+        data =  response.data
         resetTable()
         fillTable()
     }
@@ -67,23 +67,19 @@ function resetTable() {
 }
 
 async function save() {
-    let keys = Object.keys(sessionStorage)
     const foodArray = []
-    for (let i = 0; i < keys.length; i++) {
-        foodArray.push(sessionStorage[i])
+    for (let i = 0; i < data.length; i++) {
+        foodArray.push(data[i])
     }
     let response = await saveFood(foodArray)
     if (!response.success) {
         $("#errorText").text("Something went wrong")
-    } else {
-        resetSessionStorage()
-        await getAllFood()
     }
 }
 
 async function setup() {
-    resetSessionStorage()
-    await getAllFood()
+    let response = await getFood();
+    data =  response.data
     fillTable()
 
 }
@@ -94,7 +90,7 @@ let changeIndex = -1
 $("#change").on("click", async function () {
     if (changeIndex !== -1) {
         $("#errorText").text("")
-        let currentFood = JSON.parse(sessionStorage.getItem(changeIndex.toString()))
+        let currentFood = data[changeIndex]
         let id = currentFood.ID
         let userid = currentFood.userID
         let name = $("#name").val()
@@ -109,7 +105,7 @@ $("#change").on("click", async function () {
             $("#errorText").text("Name and type must be filled in")
         } else {
             let food = {ID: id, userID: userid, name: name, type: type, amount: amount, unit: unit}
-            sessionStorage.setItem(changeIndex, JSON.stringify(food))
+            data[changeIndex] = food
             await save()
             resetTable()
             fillTable()
@@ -124,11 +120,11 @@ $("#add").on("click", function () {
 $("#delete").on("click", async function () {
     const foodToDelete = [];
         if (changeIndex !== -1) {
-            foodToDelete.push(JSON.parse(sessionStorage.getItem(changeIndex)))
+            foodToDelete.push(data[changeIndex])
             let response = await deleteFood(foodToDelete)
             if (response.success){
-                resetSessionStorage()
-                await getAllFood()
+                let response = await getFood();
+                data =  response.data
                 resetTable()
                 fillTable()
             }
@@ -152,7 +148,7 @@ $("#reset").on("click", function () {
     $("#name").val("")
 
 })
-
+let data
 checkToken()
 setup()
 logout()
